@@ -19,7 +19,7 @@ const Editor = ({ document, onChange }) => {
         <Slate editor={editor} value={document} onChange={onChange}>
             <Container className={"editor-container"}>
                 <div className="editor">
-                    <Editable />
+                    <Editable placeholder="Enter some rich text…" />
                 </div>
             </Container>
         </Slate>
