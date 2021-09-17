@@ -1,5 +1,6 @@
 // React
 import { useMemo } from "react";
+import PropTypes from 'prop-types';
 
 // Slate
 import { withReact, Slate, Editable } from "slate-react";
@@ -23,6 +24,14 @@ const Editor = ({ document, onChange }) => {
             </Container>
         </Slate>
     )
+}
+
+// MRL: Specify the "shape" of the expected date on this component, either using propTypes (as below) or by using TypeScript instead of Vanilla JS
+Editor.propTypes = {
+    /** The  */
+    document: PropTypes.array,
+    /** Event to change the task to the Archived state */
+    onChange: PropTypes.func,
 }
 
 export default Editor;
