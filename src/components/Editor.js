@@ -28,8 +28,8 @@ const Editor = ({ document, onChange, placeholder }) => {
 
 // MRL: Specify the "shape" of the expected date on this component, either using propTypes (as below) or by using TypeScript instead of Vanilla JS
 Editor.propTypes = {
-    /** The  */
-    document: PropTypes.array,
+    /** The document property must be an array of objects */
+    document: PropTypes.arrayOf(PropTypes.object),
     /** Event to change the task to the Archived state */
     onChange: PropTypes.func.isRequired,
 }
