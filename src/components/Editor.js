@@ -32,9 +32,10 @@ Editor.propTypes = {
     document: PropTypes.arrayOf(PropTypes.object),
     /** Event to change the document state */
     onChange: PropTypes.func.isRequired,
+    placeholder: PropTypes.string
 }
 
-// MRL: Describe default values for any props. Data type for these will be inferred
+// MRL: Describe default values for any props.
 Editor.defaultProps = {
     placeholder: 'Enter some text...'
 }
