@@ -30,7 +30,7 @@ const Editor = ({ document, onChange, placeholder }) => {
 Editor.propTypes = {
     /** The document property must be an array of objects */
     document: PropTypes.arrayOf(PropTypes.object),
-    /** Event to change the task to the Archived state */
+    /** Event to change the document state */
     onChange: PropTypes.func.isRequired,
 }
 
