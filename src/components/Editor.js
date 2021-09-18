@@ -9,6 +9,9 @@ import { createEditor } from "slate";
 // React-Bootstrap
 import { Container } from 'react-bootstrap';
 
+// Compoenents
+import ErrorBoundary from "./ErrorBoundary";
+
 // CSS
 import "./Editor.css";
 
@@ -16,13 +19,15 @@ const Editor = ({ document, onChange, placeholder }) => {
     const editor = useMemo(() => withReact(createEditor()), []);
 
     return (
-        <Slate editor={editor} value={document} onChange={onChange}>
-            <Container className={"editor-container"}>
-                <div className="editor">
-                    <Editable placeholder={placeholder} />
-                </div>
-            </Container>
-        </Slate>
+        <ErrorBoundary>
+            <Slate editor={editor} value={document} onChange={onChange}>
+                <Container className={"editor-container"}>
+                    <div className="editor">
+                        <Editable placeholder={placeholder} />
+                    </div>
+                </Container>
+            </Slate>
+        </ErrorBoundary>
     )
 }
 
@@ -32,6 +37,7 @@ Editor.propTypes = {
     document: PropTypes.arrayOf(PropTypes.object),
     /** Event to change the document state */
     onChange: PropTypes.func.isRequired,
+    /** Text to display when the Editor has no content */
     placeholder: PropTypes.string
 }
 
