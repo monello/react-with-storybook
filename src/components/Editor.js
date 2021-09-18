@@ -10,7 +10,7 @@ import { createEditor } from "slate";
 import { Container } from 'react-bootstrap';
 
 // Compoenents
-import ErrorBoundary from "./ErrorBoundary";
+import ErrorBoundary from "../utils/ErrorBoundary";
 
 // CSS
 import "./Editor.css";
