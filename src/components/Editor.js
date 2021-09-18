@@ -43,6 +43,7 @@ Editor.propTypes = {
 
 // MRL: Describe default values for any props.
 Editor.defaultProps = {
+    document: [{}],
     placeholder: 'Enter some text...'
 }
 
