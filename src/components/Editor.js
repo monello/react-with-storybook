@@ -1,5 +1,6 @@
 // React
 import { useMemo } from "react";
+// import { useMemo, useRef } from "react";
 import PropTypes from 'prop-types';
 
 // Slate
@@ -9,7 +10,7 @@ import { createEditor } from "slate";
 // React-Bootstrap
 import { Container } from 'react-bootstrap';
 
-// Compoenents
+// Utils
 import ErrorBoundary from "../utils/ErrorBoundary";
 
 // CSS
@@ -17,6 +18,10 @@ import "./Editor.css";
 
 const Editor = ({ document, onChange, placeholder }) => {
     const editor = useMemo(() => withReact(createEditor()), []);
+
+    // const editorRef = useRef()
+    // if (!editorRef.current) editorRef.current = withReact(createEditor())
+    // const editor = editorRef.current
 
     return (
         <ErrorBoundary>
