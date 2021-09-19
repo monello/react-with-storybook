@@ -15,19 +15,21 @@ import useEditorConfig from "../hooks/useEditorConfig";
 // Utils
 import ErrorBoundary from "../utils/ErrorBoundary";
 
-// CSSs
+// CSS
 import "./Editor.css";
 
 const Editor = ({ document, onChange, placeholder }) => {
     const editor = useMemo(() => withReact(createEditor()), []);
-    const { renderElement } = useEditorConfig(editor);
+    const { renderElement, renderLeaf } = useEditorConfig(editor);
 
     return (
         <ErrorBoundary>
             <Slate editor={editor} value={document} onChange={onChange}>
                 <Container className={"editor-container"}>
                     <div className="editor">
-                        <Editable renderElement={renderElement} placeholder={placeholder} />
+                        <Editable
+                            renderElement={renderElement} placeholder={placeholder}
+                            renderLeaf={renderLeaf} />
                     </div>
                 </Container>
             </Slate>

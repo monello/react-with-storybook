@@ -2,7 +2,7 @@
 import { DefaultElement } from "slate-react";
 
 export default function useEditorConfig(editor) {
-    return { renderElement };
+    return { renderElement, renderLeaf };
 }
 
 function renderElement(props) {
@@ -26,4 +26,30 @@ function renderElement(props) {
             // For the default case, we delegate to Slate's default rendering.
             return <DefaultElement {...props} />;
     }
+}
+
+function renderLeaf({ attributes, children, leaf }) {
+    let el = <>{children}</>;
+
+    // MRL: THe if-statements will wrap the different tags in order meaning if you have bold and italic for example it will nested <span><em><strong>text</strong></em></span>
+    // MRL: if you have all the types: <span><u><em><code><strong>text</strong</code></em></u></span>
+    if (leaf.bold) {
+        el = <strong>{el}</strong>;
+    }
+
+    if (leaf.code) {
+        el = <code>{el}</code>;
+    }
+
+    if (leaf.italic) {
+        el = <em>{el}</em>;
+    }
+
+    if (leaf.underline) {
+        el = <u>{el}</u>;
+    }
+
+    // all existing attributes are just passed along using the spread operator
+    return <span {...attributes}>{el}</span>;
+
 }

@@ -12,17 +12,6 @@ export default {
     title: 'SlateJS/Editor'
 }
 
-// Some sample data. Can be replaced by a Redux implementation
-const BlankDocument = [{ children: [{ text: '' }] }]
-const ExampleDocument = [
-    {
-        type: "paragraph",
-        children: [
-            { text: "Hello World! This is my paragraph inside a sample document." },
-        ],
-    },
-]
-
 // MRL: Stories are defined by functions that return a rendered component, given different props for each story (state)
 
 // MRL: We create a "Template" function that we can re-use for each story.
@@ -36,11 +25,55 @@ const Template = args => {
 // MRL: This is where we use .bind() to make a "new" function (copy of the Template function instance)
 export const Blank = Template.bind({})
 Blank.args = {
-    document: BlankDocument
+    document: [{ children: [{ text: '' }] }]
 }
 
 // MRL: STORY 2 - Now with pre-filled content
 export const Prefilled = Template.bind({})
 Prefilled.args = {
-    document: ExampleDocument
+    document: [
+        {
+            type: "paragraph",
+            children: [
+                { text: "Hello World! This is my paragraph inside a sample document." },
+            ],
+        },
+    ]
+}
+
+// MRL: STORY 3 - some Custom Elements
+export const CustomElements = Template.bind({})
+CustomElements.args = {
+    document: [
+        {
+            type: "h1",
+            children: [{ text: "Heading 1" }],
+        },
+        {
+            type: "h2",
+            children: [{ text: "Heading 2" }],
+        },
+        {
+            type: "h3",
+            children: [{ text: "Heading 3" }],
+        },
+        {
+            type: "h4",
+            children: [{ text: "Heading 4" }],
+        },
+        {
+            type: "paragraph",
+            children: [
+                { text: "Hello World! This is my paragraph inside a sample document" },
+                { text: ". " },
+                { text: "Bold text", bold: true, code: true },
+                { text: ". " },
+                { text: "Italic text", italic: true },
+                { text: ". " },
+                { text: "Bold and underlined text", bold: true, underline: true },
+                { text: ". " },
+                { text: "variableFoo", code: true },
+            ],
+        }
+    ]
 }

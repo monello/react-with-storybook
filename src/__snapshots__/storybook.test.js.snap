@@ -6,6 +6,12 @@ exports[`Storyshots SlateJS/Editor Blank 1`] = `
 </h1>
 `;
 
+exports[`Storyshots SlateJS/Editor Custom Elements 1`] = `
+<h1>
+  Something went wrong.
+</h1>
+`;
+
 exports[`Storyshots SlateJS/Editor Prefilled 1`] = `
 <h1>
   Something went wrong.
