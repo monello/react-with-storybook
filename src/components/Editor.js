@@ -1,6 +1,5 @@
 // React
 import { useMemo } from "react";
-// import { useMemo, useRef } from "react";
 import PropTypes from 'prop-types';
 
 // Slate
@@ -10,25 +9,25 @@ import { createEditor } from "slate";
 // React-Bootstrap
 import { Container } from 'react-bootstrap';
 
+// Components
+import useEditorConfig from "../hooks/useEditorConfig";
+
 // Utils
 import ErrorBoundary from "../utils/ErrorBoundary";
 
-// CSS
+// CSSs
 import "./Editor.css";
 
 const Editor = ({ document, onChange, placeholder }) => {
     const editor = useMemo(() => withReact(createEditor()), []);
-
-    // const editorRef = useRef()
-    // if (!editorRef.current) editorRef.current = withReact(createEditor())
-    // const editor = editorRef.current
+    const { renderElement } = useEditorConfig(editor);
 
     return (
         <ErrorBoundary>
             <Slate editor={editor} value={document} onChange={onChange}>
                 <Container className={"editor-container"}>
                     <div className="editor">
-                        <Editable placeholder={placeholder} />
+                        <Editable renderElement={renderElement} placeholder={placeholder} />
                     </div>
                 </Container>
             </Slate>
