@@ -9,11 +9,14 @@ import { createEditor } from "slate";
 // React-Bootstrap
 import { Container } from 'react-bootstrap';
 
-// Components
+// Custom Hooks
 import useEditorConfig from "../hooks/useEditorConfig";
 
 // Utils
 import ErrorBoundary from "../utils/ErrorBoundary";
+
+// Components
+import Toolbar from "./Toolbar";
 
 // CSS
 import "./Editor.css";
@@ -26,6 +29,7 @@ const Editor = ({ document, onChange, placeholder }) => {
         <ErrorBoundary>
             <Slate editor={editor} value={document} onChange={onChange}>
                 <Container className={"editor-container"}>
+                    <Toolbar />
                     <div className="editor">
                         <Editable
                             renderElement={renderElement} placeholder={placeholder}
