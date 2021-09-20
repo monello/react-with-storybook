@@ -32,3 +32,14 @@ const ExampleDocument = [
 ];
 
 export default ExampleDocument;
+
+export const BlankDocument = [{ children: [{ text: '' }] }];
+
+export const SmallDocument = [
+    {
+        type: "paragraph",
+        children: [
+            { text: "Hello World! This is my paragraph inside a sample document." },
+        ],
+    },
+];

@@ -4,6 +4,9 @@ import { useState } from 'react';
 // Component
 import Editor from './Editor'
 
+// Example Documents
+import ExampleDocument, { BlankDocument, SmallDocument } from '../utils/ExampleDocuments';
+
 // MRL: Tell Storybook about the component we are documenting.
 // MRL: component -- the component itself
 // MRL: title -- how to refer to the component in the sidebar of the Storybook app
@@ -25,55 +28,17 @@ const Template = args => {
 // MRL: This is where we use .bind() to make a "new" function (copy of the Template function instance)
 export const Blank = Template.bind({})
 Blank.args = {
-    document: [{ children: [{ text: '' }] }]
+    document: BlankDocument
 }
 
 // MRL: STORY 2 - Now with pre-filled content
 export const Prefilled = Template.bind({})
 Prefilled.args = {
-    document: [
-        {
-            type: "paragraph",
-            children: [
-                { text: "Hello World! This is my paragraph inside a sample document." },
-            ],
-        },
-    ]
+    document: SmallDocument
 }
 
 // MRL: STORY 3 - some Custom Elements
 export const CustomElements = Template.bind({})
 CustomElements.args = {
-    document: [
-        {
-            type: "h1",
-            children: [{ text: "Heading 1" }],
-        },
-        {
-            type: "h2",
-            children: [{ text: "Heading 2" }],
-        },
-        {
-            type: "h3",
-            children: [{ text: "Heading 3" }],
-        },
-        {
-            type: "h4",
-            children: [{ text: "Heading 4" }],
-        },
-        {
-            type: "paragraph",
-            children: [
-                { text: "Hello World! This is my paragraph inside a sample document" },
-                { text: ". " },
-                { text: "Bold text", bold: true, code: true },
-                { text: ". " },
-                { text: "Italic text", italic: true },
-                { text: ". " },
-                { text: "Bold and underlined text", bold: true, underline: true },
-                { text: ". " },
-                { text: "variableFoo", code: true },
-            ],
-        }
-    ]
+    document: ExampleDocument
 }

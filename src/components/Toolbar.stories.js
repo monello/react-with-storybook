@@ -8,6 +8,9 @@ import { createEditor } from "slate";
 // Component
 import Toolbar from "./Toolbar";
 
+// Example Documents
+import { BlankDocument } from '../utils/ExampleDocuments';
+
 // MRL: Tell Storybook about the component we are documenting.
 // MRL: component -- the component itself
 // MRL: title -- how to refer to the component in the sidebar of the Storybook app
@@ -24,7 +27,7 @@ const Template = args => {
     const editor = useMemo(() => withReact(createEditor()), []);
 
     return (
-        <Slate editor={editor} value={[{ children: [{ text: '' }] }]}>
+        <Slate editor={editor} value={BlankDocument}>
             <Toolbar {...args} />
         </Slate>
     )

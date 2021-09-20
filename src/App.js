@@ -5,7 +5,7 @@ import { useState } from 'react';
 import Editor from './components/Editor';
 
 // utils
-import ExampleDocument from './utils/ExampleDocument';
+import ExampleDocument from './utils/ExampleDocuments';
 
 // React-Bootstrap
 import { Navbar, Container } from 'react-bootstrap';
