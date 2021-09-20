@@ -1,5 +1,5 @@
 // React
-import { useMemo } from "react";
+import { useMemo, useCallback, useEffect } from "react";
 import PropTypes from 'prop-types';
 
 // Slate
@@ -11,6 +11,7 @@ import { Container } from 'react-bootstrap';
 
 // Custom Hooks
 import useEditorConfig from "../hooks/useEditorConfig";
+import useSelection from "../hooks/useSelection";
 
 // Utils
 import ErrorBoundary from "../utils/ErrorBoundary";
@@ -24,15 +25,30 @@ import "./Editor.css";
 const Editor = ({ document, onChange, placeholder }) => {
     const editor = useMemo(() => withReact(createEditor()), []);
     const { renderElement, renderLeaf } = useEditorConfig(editor);
+    const [selection, setSelection] = useSelection(editor);
+
+    const onChangeHandler = useCallback(
+        (document) => {
+            onChange(document);
+            setSelection(editor.selection);
+            console.log('Editor.js -> [onChangeHandler] selection:', editor.selection);
+        },
+        [editor.selection, onChange, setSelection]
+    );
+
+    useEffect(() => {
+        console.log('Editor Re-Rendered, even when the user just clicks somewhere inside the Editor');
+    });
 
     return (
         <ErrorBoundary>
-            <Slate editor={editor} value={document} onChange={onChange}>
+            <Slate editor={editor} value={document} onChange={onChangeHandler}>
                 <Container className={"editor-container"}>
-                    <Toolbar />
+                    <Toolbar selection={selection} />
                     <div className="editor">
                         <Editable
-                            renderElement={renderElement} placeholder={placeholder}
+                            placeholder={placeholder}
+                            renderElement={renderElement}
                             renderLeaf={renderLeaf} />
                     </div>
                 </Container>
