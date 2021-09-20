@@ -6,6 +6,10 @@ import Dropdown from "react-bootstrap/Dropdown";
 import DropdownButton from "react-bootstrap/DropdownButton";
 import Button from "react-bootstrap/Button";
 
+// Components
+import { getActiveStyles, toggleStyle } from "../utils/EditorUtils";
+import { useSlateStatic as useEditor } from "slate-react";
+
 // Styles
 import "./Toolbar.css";
 
@@ -13,6 +17,8 @@ const PARAGRAPH_STYLES = ["h1", "h2", "h3", "h4", "paragraph", "multiple"];
 const CHARACTER_STYLES = ["bold", "italic", "underline", "code"];
 
 const Toolbar = ({ selection, previousSelection }) => {
+    const editor = useEditor();
+
     return (
         <div className="toolbar">
             {/* Dropdown for paragraph styles */}
@@ -32,8 +38,13 @@ const Toolbar = ({ selection, previousSelection }) => {
             {CHARACTER_STYLES.map((style) => (
                 <ToolBarButton
                     key={style}
+                    characterStyle={style}
                     icon={<i className={`bi ${getIconForButton(style)}`} />}
-                    isActive={false}
+                    isActive={getActiveStyles(editor).has(style)}
+                    onMouseDown={(event) => {
+                        event.preventDefault();
+                        toggleStyle(editor, style);
+                    }}
                 />
             ))}
         </div>
