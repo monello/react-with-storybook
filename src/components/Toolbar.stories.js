@@ -1,3 +1,10 @@
+// React
+import { useMemo } from "react";
+
+// Slate
+import { withReact, Slate } from "slate-react";
+import { createEditor } from "slate";
+
 // Component
 import Toolbar from "./Toolbar";
 
@@ -14,7 +21,13 @@ export default {
 // MRL: We create a "Template" function that we can re-use for each story.
 // MRL: This helps us type less code as we don't need new functions for each story, we can re-use the Template function for each story by implementing the JS .bind() function to make copies if this Template Function
 const Template = args => {
-    return <Toolbar {...args} />
+    const editor = useMemo(() => withReact(createEditor()), []);
+
+    return (
+        <Slate editor={editor} value={[{ children: [{ text: '' }] }]}>
+            <Toolbar {...args} />
+        </Slate>
+    )
 }
 
 // MRL: STORY 1 - The Default Toolbar
