@@ -1,3 +1,6 @@
+// React
+import PropTypes from 'prop-types';
+
 // Bootstrap
 import Dropdown from "react-bootstrap/Dropdown";
 import DropdownButton from "react-bootstrap/DropdownButton";
@@ -9,7 +12,7 @@ import "./Toolbar.css";
 const PARAGRAPH_STYLES = ["h1", "h2", "h3", "h4", "paragraph", "multiple"];
 const CHARACTER_STYLES = ["bold", "italic", "underline", "code"];
 
-export default function Toolbar({ selection, previousSelection }) {
+const Toolbar = ({ selection, previousSelection }) => {
     return (
         <div className="toolbar">
             {/* Dropdown for paragraph styles */}
@@ -37,7 +40,15 @@ export default function Toolbar({ selection, previousSelection }) {
     );
 }
 
-function ToolBarButton(props) {
+// MRL: Specify the "shape" of the expected date on this component, either using propTypes (as below) or by using TypeScript instead of Vanilla JS
+Toolbar.propTypes = {
+    /** The the current selection data */
+    selection: PropTypes.object,
+    /** The previous selection data */
+    previousSelection: PropTypes.object,
+}
+
+const ToolBarButton = props => {
     const { icon, isActive, ...otherProps } = props;
     return (
         <Button
@@ -51,7 +62,7 @@ function ToolBarButton(props) {
     );
 }
 
-function getIconForButton(style) {
+const getIconForButton = style => {
     switch (style) {
         case "bold":
             return "bi-type-bold";
@@ -70,7 +81,7 @@ function getIconForButton(style) {
     }
 }
 
-function getLabelForBlockStyle(style) {
+const getLabelForBlockStyle = style => {
     switch (style) {
         case "h1":
             return "Heading 1";
@@ -88,3 +99,5 @@ function getLabelForBlockStyle(style) {
             throw new Error(`Unhandled style in getLabelForBlockStyle: ${style}`);
     }
 }
+
+export default Toolbar;

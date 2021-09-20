@@ -1,5 +1,62 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Storyshots Components/Toolbar Default 1`] = `
+<div
+  className="toolbar"
+>
+  <div
+    className="block-style-dropdown dropdown"
+  >
+    <button
+      aria-expanded={false}
+      className="dropdown-toggle btn btn-primary"
+      disabled={false}
+      id="block-style"
+      onClick={[Function]}
+      type="button"
+    >
+      Paragraph
+    </button>
+  </div>
+  <button
+    className="toolbar-btn btn btn-outline-primary"
+    disabled={false}
+    type="button"
+  >
+    <i
+      className="bi bi-type-bold"
+    />
+  </button>
+  <button
+    className="toolbar-btn btn btn-outline-primary"
+    disabled={false}
+    type="button"
+  >
+    <i
+      className="bi bi-type-italic"
+    />
+  </button>
+  <button
+    className="toolbar-btn btn btn-outline-primary"
+    disabled={false}
+    type="button"
+  >
+    <i
+      className="bi bi-type-underline"
+    />
+  </button>
+  <button
+    className="toolbar-btn btn btn-outline-primary"
+    disabled={false}
+    type="button"
+  >
+    <i
+      className="bi bi-code-slash"
+    />
+  </button>
+</div>
+`;
+
 exports[`Storyshots SlateJS/Editor Blank 1`] = `
 <h1>
   Something went wrong.
